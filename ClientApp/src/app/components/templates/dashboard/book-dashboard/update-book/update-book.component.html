@@ -1,0 +1,112 @@
+<form [formGroup]="updateBookForm" (ngSubmit)="updateBook()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Kitap Güncelle</h5>
+    <button type="button" aria-label="Close" (click)="dismissModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="title" class="font-weight-bold col-form-label-sm">Kitap Adı</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Kitap Adı" id="title"
+                    formControlName="title">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="categoryId" class="font-weight-bold col-form-label-sm">Kategori</label>
+                  <select class="custom-select custom-select-sm" id="category" name="categoryId"
+                    formControlName="categoryId">
+                    <option class="dropdown-item" disabled selected value="">Kategori Seçiniz</option>
+                    <option *ngFor="let category of categoryList; index as i" [value]="category.value"
+                      [label]="category.label">
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="publisherId" class="font-weight-bold col-form-label-sm">Yayınevi</label>
+                  <select class="custom-select custom-select-sm" id="publisher" name="publisherId"
+                    formControlName="publisherId">
+                    <option class="dropdown-item" disabled selected value="">Yayınevi Seçiniz</option>
+                    <option *ngFor="let publisher of publisherList; index as i" [value]="publisher.value"
+                      [label]="publisher.label">
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="authorId" class="font-weight-bold col-form-label-sm">Yazar</label>
+                  <select class="custom-select custom-select-sm" id="author" name="authorId" formControlName="authorId">
+                    <option class="dropdown-item" disabled selected value="">Yazar Seçiniz</option>
+                    <option *ngFor="let author of authorList; index as i" [value]="author.value" [label]="author.label">
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="mediaType" class="font-weight-bold col-form-label-sm">Medya Tipi</label>
+                  <select class="custom-select custom-select-sm" id="mediaType" name="mediaType"
+                    formControlName="mediaType">
+                    <option class="dropdown-item" disabled selected value="">Medya Tipi Seçiniz</option>
+                    <option *ngFor="let key of mediaTypeKeys; index as i" [value]="i+1" [label]="mediaTypeEnum[key]">
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="language" class="font-weight-bold col-form-label-sm">Dil</label>
+                  <select class="custom-select custom-select-sm" id="language" name="language"
+                    formControlName="language">
+                    <option class="dropdown-item" disabled selected value="">Dil Seçiniz</option>
+                    <option *ngFor="let key of languageKeys; index as i" [value]="i+1" [label]="languageEnum[key]">
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="totalPages" class="font-weight-bold col-form-label-sm">Sayfa Sayısı </label>
+                  <input type="number" name="rating" class="form-control form-control-sm" placeholder="Sayfa Sayısı"
+                    formControlName="totalPages" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="price" class="font-weight-bold col-form-label-sm">Fiyat </label>
+                  <input type="number" name="price" class="form-control form-control-sm" placeholder="Fiyat"
+                    formControlName="price" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="dateOfBirth" class="font-weight-bold col-form-label-sm">Yayın Tarihi: </label>
+                  <input type="date" class="form-control form-control-sm" placeholder="Yayın Tarihi" name="publishedDate"
+                    id="publishedDate" formControlName="publishedDate">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="resim" class="font-weight-bold col-form-label-sm">Profil Resmi Url </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Profil Resmi Url" id="imageUrl"
+                    formControlName="imageUrl">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="introduction" class="font-weight-bold col-form-label-sm">Kitap Hakkında: </label>
+                  <textarea required class="form-control form-control-sm" id="introduction" name="introduction"
+                    rows="10" formControlName="introduction"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Kapat</button>
+    <button type="submit" class="btn btn-success" [disabled]="updateBookForm.invalid || !updateBookForm.dirty">Güncelle</button>
+  </div>
+</form>

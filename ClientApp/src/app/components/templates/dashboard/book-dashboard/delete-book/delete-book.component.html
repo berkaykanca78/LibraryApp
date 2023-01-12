@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Kitap Sil</h5>
+  <button type="button" aria-label="Close" (click)="dismissModal()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="alert alert-danger" role="alert">
+    Silmek İstediğinizden Emin Misiniz ? Silme İşleminin Geri Dönğüşü Yoktur.
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-warning" (click)="closeModal()">Kapat</button>
+  <button type="button" class="btn btn-danger" (click)="deleteBook()">Sil</button>
+</div>

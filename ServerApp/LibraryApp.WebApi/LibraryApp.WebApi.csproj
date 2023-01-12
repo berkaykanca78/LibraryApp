@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.1" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
+	  <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryApp.ActionFilter\LibraryApp.ActionFilter.csproj" />
+    <ProjectReference Include="..\LibraryApp.DataAccess\LibraryApp.DataAccess.csproj" />
+    <ProjectReference Include="..\LibraryApp.Data\LibraryApp.Data.csproj" />
+    <ProjectReference Include="..\LibraryApp.ExceptionHandling\LibraryApp.ExceptionHandling.csproj" />
+    <ProjectReference Include="..\LibraryApp.Mapper\LibraryApp.Mapper.csproj" />
+    <ProjectReference Include="..\LibraryApp.Validation\LibraryApp.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,149 @@
+<form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Yeni Kullanıcı Ekle</h5>
+    <button type="button" aria-label="Close" (click)="dismissModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="row">
+                <label for="gender" class="font-weight-bold col-form-label-sm">Cinsiyet : </label>
+                <div class="col-sm-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="gender" type="radio" [value]="0" formControlName="gender">
+                    <label class="form-check-label col-form-label-sm" for="male">Erkek</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="gender" type="radio" [value]="1" formControlName="gender">
+                    <label class="form-check-label col-form-label-sm" for="female">Kadın</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ad" class="font-weight-bold col-form-label-sm">Ad </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Ad" id="name"
+                  formControlName="name">
+                <app-validator [control]="this.addUserFormControls.name"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="ad" class="font-weight-bold col-form-label-sm">Soyad </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Soyad" id="surname"
+                  formControlName="surname">
+                <app-validator [control]="this.addUserFormControls.surname"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="eposta" class="font-weight-bold col-form-label-sm">E-Posta </label>
+                <input type="email" class="form-control form-control-sm" id="email" placeholder="E-Posta"
+                  formControlName="email">
+                <app-validator [control]="this.addUserFormControls.email"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="sifre" class="font-weight-bold col-form-label-sm">Şifre </label>
+                <input type="password" class="form-control form-control-sm" id="password" placeholder="Şifre"
+                  formControlName="password">
+                <app-validator [control]="this.addUserFormControls.password"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="kullaniciAdi" class="font-weight-bold col-form-label-sm">Kullanıcı Adı </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Kullanıcı Adı" id="userName"
+                  formControlName="userName">
+                <app-validator [control]="this.addUserFormControls.userName"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="font-weight-bold col-form-label-sm">Doğum Tarihi </label>
+                <input type="date" class="form-control form-control-sm" placeholder="Doğum Tarihi"
+                  formControlName="dateOfBirth" min="1923-01-01"
+                  max="{{this.ch.convertFormattedDate(this.dateHelper.now)}}">
+                <app-validator [control]="this.addUserFormControls.dateOfBirth"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ad" class="font-weight-bold col-form-label-sm">Ülke </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Türkiye" id="country"
+                  value="Türkiye" label="Türkiye" disabled formControlName="country">
+                <app-validator [control]="this.addUserFormControls.country"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="city" class="font-weight-bold col-form-label-sm">Şehir</label>
+                <select name="city" placeholder="Şehir" class="custom-select custom-select-sm" id="city"
+                  formControlName="city">
+                  <option class="dropdown-item" disabled selected value="">Şehir Seçiniz</option>
+                  <option *ngFor="let key of provinceKeys; index as i" [value]="key" [label]="provinceEnum[key]">
+                  </option>
+                </select>
+                <app-validator [control]="this.addUserFormControls.city"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="resim" class="font-weight-bold col-form-label-sm">Sokak Adı </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Sokak Adı" id="streetName"
+                  formControlName="streetName">
+                <app-validator [control]="this.addUserFormControls.streetName"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="zipCode" class="font-weight-bold col-form-label-sm">Posta Kodu </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Posta Kodu" id="zipCode"
+                  formControlName="zipCode">
+                <app-validator [control]="this.addUserFormControls.zipCode"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="introduction" class="font-weight-bold col-form-label-sm">Adres</label>
+                <textarea required class="form-control form-control-sm" placeholder="Adres" rows="5"
+                  formControlName="fullAddress"></textarea>
+                <app-validator [control]="this.addUserFormControls.fullAddress"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="introduction" class="font-weight-bold col-form-label-sm">Hakkımda</label>
+                <textarea required class="form-control form-control-sm" placeholder="Hakkımda" rows="5"
+                  formControlName="introduction"></textarea>
+                <app-validator [control]="this.addUserFormControls.introduction"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="hobbies" class="font-weight-bold col-form-label-sm">Hobilerim</label>
+                <textarea required class="form-control form-control-sm" placeholder="Hobilerim" rows="5"
+                  formControlName="hobbies"></textarea>
+                <app-validator [control]="this.addUserFormControls.hobbies"></app-validator>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="resim" class="font-weight-bold col-form-label-sm">Profil Resmi Url </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Profil Resmi Url" id="imageUrl"
+                  formControlName="imageUrl">
+                <app-validator [control]="this.addUserFormControls.imageUrl"></app-validator>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="resim" class="font-weight-bold col-form-label-sm">Telefon Numarası </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Telefon Numarası" id="phoneNumber"
+                  formControlName="phoneNumber">
+                <app-validator [control]="this.addUserFormControls.phoneNumber"></app-validator>
+              </div>
+            </div>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Kapat</button>
+    <button type="submit" class="btn btn-success" [disabled]="addUserForm.invalid || !addUserForm.dirty">Ekle</button>
+  </div>
+</form>

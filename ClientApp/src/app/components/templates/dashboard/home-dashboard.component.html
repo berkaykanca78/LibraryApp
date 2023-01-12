@@ -1,0 +1,63 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+<div class="container-fluid ">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Ana Sayfa - İstatistikler</li>
+    </ol>
+  </nav>
+  <hr>
+  <div class="col d-flex flex-column h-sm-100">
+    <main class="row overflow-auto">
+      <div class="col pt-4">
+        <div class="row">
+          <div class="col-4">
+            <div class="card text-white bg-primary mb-3 text-center">
+              <div class="card-header">Kullanıcı Sayısı</div>
+              <div class="card-body">
+                <h5 class="card-title">{{this.counts?.usersCount}}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card text-white bg-secondary mb-3 text-center">
+              <div class="card-header">Kitap Sayısı</div>
+              <div class="card-body">
+                <h5 class="card-title">{{this.counts?.booksCount}}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card text-white bg-success mb-3 text-center">
+              <div class="card-header">Yazar Sayısı</div>
+              <div class="card-body">
+                <h5 class="card-title">{{this.counts?.authorsCount}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="card">
+              <app-pie-chart></app-pie-chart>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="card">
+              <app-bar-chart></app-bar-chart>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="card">
+              <app-doughnut-chart></app-doughnut-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

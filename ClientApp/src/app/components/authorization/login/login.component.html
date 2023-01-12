@@ -1,0 +1,27 @@
+<div class="container mb-5" style="margin-top: 50px;">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="text-center">
+      <h4>Giriş Yap</h4>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label class="font-weight-bold col-form-label-sm" for="userName">Kullanıcı Adı</label>
+          <input type="userName" class="form-control form-control-sm" id="userName" placeholder="Kullanıcı Adı"
+            formControlName="userName">
+          <app-validator [control]="this.loginFormControls.userName"></app-validator>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold col-form-label-sm" for="password">Şifre</label>
+          <input type="password" class="form-control form-control-sm" id="password" placeholder="Şifre"
+            formControlName="password">
+          <app-validator [control]="this.loginFormControls.password"></app-validator>
+        </div>
+        <hr class="my-4">
+        <button class="w-100 btn btn-primary btn-sm" type="submit" [disabled]="loginForm.invalid">Giriş İşlemini
+          Tamamla</button>
+      </div>
+    </div>
+  </form>
+</div>

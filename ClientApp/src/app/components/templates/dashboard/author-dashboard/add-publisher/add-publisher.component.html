@@ -1,0 +1,30 @@
+<form [formGroup]="addPublisherForm" (ngSubmit)="addPublisher()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Yeni Yayıncı Ekle</h5>
+    <button type="button" aria-label="Close" (click)="dismissModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="ad" class="font-weight-bold col-form-label-sm">Ad </label>
+                <input type="text" class="form-control form-control-sm" placeholder="Ad" id="name"
+                  formControlName="name">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Kapat</button>
+    <button type="submit" class="btn btn-success"
+      [disabled]="addPublisherForm.invalid || !addPublisherForm.dirty">Ekle</button>
+  </div>
+</form>

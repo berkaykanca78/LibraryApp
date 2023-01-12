@@ -1,0 +1,63 @@
+<div class="container-fluid table-responsive ">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Kitap Listesi</li>
+    </ol>
+  </nav>
+  <hr>
+  <button type="button" class="btn btn-success btn-sm" (click)="openAddBookModal()">
+    <i class="fa-solid fa-plus"></i> Yeni Kitap Ekle
+  </button>
+  &nbsp;
+  <button type="button" class="btn btn-warning btn-sm" (click)="openAddPublisherModal()">
+    <i class="fa-solid fa-plus"></i> Yeni Yayıncı Ekle
+  </button>
+  <hr>
+  <table class="table table-sm table-bordered table-striped table-hover">
+    <thead class="table-primary text-center">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Kitap Adı</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Fiyatı</th>
+        <th scope="col">Puanı</th>
+        <th scope="col">İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let book of pageOfItems; let i = index" [attr.data-index]="i">
+        <th scope="row">{{book.no}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.authorName}}</td>
+        <td>{{book.price}} TL</td>
+        <td>{{book.rating}}/5</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="First group">
+            <button type="button" class="btn btn-sm btn-primary" (click)="openUpdateBookModal(book)">
+              <i class="fa-solid fa-file-pen"></i>
+              Güncelle
+            </button>
+          </div>
+          &nbsp;&nbsp;
+          <div class="btn-group" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-sm btn-danger" (click)="openDeleteBookModal(book.id)">
+              <i class="fa-solid fa-trash"></i>
+              Sil
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <jw-pagination [items]="this.books" (changePage)="onChangePage($event)" [pageSize]="10" [initialPage]="1"
+            class="pagination"></jw-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

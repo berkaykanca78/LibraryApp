@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="C:\Users\berka\.nuget\packages\nlog.config\4.7.15\contentFiles\any\any\NLog.config" />
+	  <None Remove="C:\Users\berka\.nuget\packages\nlog.schema\5.1.0\contentFiles\any\any\NLog.xsd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+	</ItemGroup>
+
+</Project>

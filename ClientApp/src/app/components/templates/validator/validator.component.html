@@ -1,0 +1,10 @@
+
+
+<div *ngIf="validationControl()">
+  <!-- <p-message severity="error" *ngIf="validationControlText(getMessage(control))" [text]="getMessage(control)"></p-message> -->
+  <p class="alert alert-danger" *ngIf="validationControlText(getMessage())">
+    {{
+      getMessage()
+    }}
+  </p>
+</div>

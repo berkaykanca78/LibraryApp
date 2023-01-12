@@ -1,0 +1,76 @@
+<div class="container-fluid table-responsive ">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Kullanıcı Listesi</li>
+    </ol>
+  </nav>
+  <hr>
+  <button type="button" class="btn btn-success btn-sm" (click)="openAddUserModal()">
+    <i class="fa-solid fa-plus"></i> Yeni Kullanıcı Ekle
+  </button>
+  <hr>
+  <table class="table table-sm table-bordered table-striped table-hover">
+    <thead class="table-primary text-center">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Kullanıcı Adı</th>
+        <th scope="col">Rolü</th>
+        <th scope="col">Ad</th>
+        <th scope="col">Soyad</th>
+        <th scope="col">Cinsiyet</th>
+        <th scope="col">Oluşturma Tarihi</th>
+        <th scope="col">Son Aktiflik Tarihi</th>
+        <th scope="col">Profil Resmi</th>
+        <th scope="col">Şehir</th>
+        <th scope="col">Ülke</th>
+        <th scope="col">Yaş</th>
+        <th scope="col">İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let user of pageOfItems;">
+        <th scope="row">{{user.no}}</th>
+        <td>{{user.userName}}</td>
+        <td>{{user.roleName}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.genderName}}</td>
+        <td>{{this.ch.convertFormattedDate (user.createdDate)}}</td>
+        <td>{{user.lastActiveDate | timeago}}</td>
+        <td>
+          <img class="img-rounded" src="{{ user?.imageUrl || 'assets/images/user.jpg' }}" width="30" height="30" alt=""
+            loading="lazy">
+        </td>
+        <td>{{user.city}}</td>
+        <td>{{user.country}}</td>
+        <td>{{user.age}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="First group">
+            <button type="button" class="btn btn-sm btn-primary" (click)="openUpdateUserModal(user)">
+              <i class="fa-solid fa-file-pen"></i>
+              Güncelle
+            </button>
+          </div>
+          &nbsp;&nbsp;
+          <div class="btn-group" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-sm btn-danger" (click)="openDeleteUserModal(user.id)">
+              <i class="fa-solid fa-trash"></i>
+              Sil
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <jw-pagination [items]="this.users" (changePage)="onChangePage($event)" [pageSize]="10" [initialPage]="1"
+            class="pagination"></jw-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

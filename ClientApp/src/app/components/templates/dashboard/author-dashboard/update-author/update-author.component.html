@@ -1,0 +1,81 @@
+<form [formGroup]="updateAuthorForm" (ngSubmit)="updateAuthor()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Yazar Güncelle</h5>
+    <button type="button" aria-label="Close" (click)="dismissModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="row">
+                <label for="gender" class="font-weight-bold col-form-label-sm">Cinsiyet : </label>
+                <div class="col-sm-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="gender" type="radio" [value]="0" formControlName="gender">
+                    <label class="form-check-label col-form-label-sm" for="male">Erkek</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="gender" type="radio" [value]="1" formControlName="gender">
+                    <label class="form-check-label col-form-label-sm" for="female">Kadın</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="firstName" class="font-weight-bold col-form-label-sm">Ad</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Ad" id="firstName"
+                    formControlName="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName" class="font-weight-bold col-form-label-sm">Soyad</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Soyad" id="lastName"
+                    formControlName="lastName">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="dateOfBirth" class="font-weight-bold col-form-label-sm">Doğum Tarihi: </label>
+                  <input type="date" class="form-control form-control-sm" placeholder="Doğum Tarihi" name="dateOfBirth"
+                    id="dateOfBirth" formControlName="dateOfBirth">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="country" class="font-weight-bold col-form-label-sm">Ülke: </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Ülke" name="country" id="country"
+                    formControlName="country">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="city" class="font-weight-bold col-form-label-sm">Şehir: </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Şehir" name="city" id="city"
+                    formControlName="city">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="resim" class="font-weight-bold col-form-label-sm">Profil Resmi Url </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Profil Resmi Url" id="imageUrl"
+                    formControlName="imageUrl">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="introduction" class="font-weight-bold col-form-label-sm">Yazar Hakkında</label>
+                  <textarea required class="form-control form-control-sm" id="introduction" name="introduction"
+                    rows="10" formControlName="introduction"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Kapat</button>
+    <button type="submit" class="btn btn-success"
+      [disabled]="updateAuthorForm.invalid || !updateAuthorForm.dirty">Güncelle</button>
+  </div>
+</form>

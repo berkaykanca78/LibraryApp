@@ -1,0 +1,142 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="img-container">
+          <img src="{{ user?.imageUrl || 'assets/images/user.jpg' }}" class="card-img-top img-thumbnail">
+        </div>
+        <div class="card-body form-row">
+          <div class="form-group col-md-12">
+            <label class="col-form-label-sm"><b>Ad / Soyad :</b> {{ user?.name }} {{ user?.surname }} </label>
+          </div>
+          <div class="form-group col-md-12">
+            <label class="col-form-label-sm"><b>Şehir / Ülke :</b> {{ user?.city }} / {{ user?.country }} </label>
+          </div>
+          <div class="form-group col-md-12">
+            <label class="fcol-form-label-sm"><b>Yaş </b>: {{ user?.age }}</label>
+          </div>
+          <div class="form-group col-md-12">
+            <label class="col-form-label-sm"><b>Hesap Oluşturulma Tarihi :</b> {{ this.ch.convertFormattedDate(user?.createdDate) }}</label>
+          </div>
+          <div class="form-group col-md-12">
+            <label class="col-form-label-sm"><b>Son Aktiflik Tarihi :</b> {{ user?.lastActiveDate | timeago }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div class="row">
+                  <label for="gender" class="font-weight-bold col-form-label-sm">Cinsiyet : </label>
+                  <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="gender" type="radio" [value]="0" [(ngModel)]="user.gender"
+                        name="gender" [attr.disabled]="true">
+                      <label class="form-check-label col-form-label-sm" for="male">Erkek</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="gender" type="radio" [value]="1" [(ngModel)]="user.gender"
+                        name="gender" [attr.disabled]="true">
+                      <label class="form-check-label col-form-label-sm" for="female">Kadın</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="name" class="font-weight-bold col-form-label-sm">Ad </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Ad" id="name" name="name"
+                    [(ngModel)]="user.name" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="surname" class="font-weight-bold col-form-label-sm">Soyad </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Soyad" id="surname"
+                    name="surname" [(ngModel)]="user.surname" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="email" class="font-weight-bold col-form-label-sm">E-Posta </label>
+                  <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="E-Posta"
+                    [(ngModel)]="user.email" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="userName" class="font-weight-bold col-form-label-sm">Kullanıcı Adı </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Kullanıcı Adı" name="userName"
+                    id="userName" [(ngModel)]="user.userName" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="dateOfBirth" class="font-weight-bold col-form-label-sm">Doğum Tarihi </label>
+                  <input type="date" class="form-control form-control-sm" placeholder="Doğum Tarihi" name="dateOfBirth"
+                    id="dateOfBirth" [ngModel]="this.ch.convertFormattedDate(user.dateOfBirth)" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="country" class="font-weight-bold col-form-label-sm">Ülke </label>
+                  <input type="text" class="form-control form-control-sm" name="country" placeholder="Ülke" id="country"
+                    [(ngModel)]="user.country" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="city" class="font-weight-bold col-form-label-sm">Şehir</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Şehir" name="city" id="city"
+                    [(ngModel)]="user.city" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="streetName" class="font-weight-bold col-form-label-sm">Sokak Adı </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Sokak Adı" name="streetName"
+                    id="streetName" [(ngModel)]="user.streetName" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="zipCode" class="font-weight-bold col-form-label-sm">Posta Kodu </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Posta Kodu" name="zipCode"
+                    id="zipCode" [(ngModel)]="user.zipCode" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="fullAddress" class="font-weight-bold col-form-label-sm">Tam Adres</label>
+                  <textarea required class="form-control form-control-sm" id="fullAddress" name="fullAddress" rows="5"
+                    [(ngModel)]="user.fullAddress" disabled></textarea>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="introduction" class="font-weight-bold col-form-label-sm">Hakkımda</label>
+                  <textarea required class="form-control form-control-sm" id="introduction" name="introduction" rows="5"
+                    [(ngModel)]="user.introduction" disabled></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="hobbies" class="font-weight-bold col-form-label-sm">Hobilerim</label>
+                  <textarea required class="form-control form-control-sm" id="hobbies" name="hobbies" rows="5"
+                    [(ngModel)]="user.hobbies" disabled></textarea>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="imageUrl" class="font-weight-bold col-form-label-sm">Profil Resmi Url </label>
+                  <input type="text" class="form-control form-control-sm" name="imageUrl" placeholder="Profil Resmi Url"
+                    id="imageUrl" [(ngModel)]="user.imageUrl" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="phoneNumber" class="font-weight-bold col-form-label-sm">Telefon Numarası </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Telefon Numarası"
+                    name="phoneNumber" id="resim" [(ngModel)]="user.phoneNumber" disabled>
+                </div>
+              </div>
+              <hr class="my-4">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

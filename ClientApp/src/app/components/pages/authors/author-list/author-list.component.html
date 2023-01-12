@@ -1,0 +1,135 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+<div class="container mt-3">
+  <div class="row mt-2">
+    <div class="col-md-3">
+      <form #form="ngForm" (ngSubmit)="getAuthors()">
+        <div class="card">
+          <div class="card-header">
+            Arama Filtreleri
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="col">
+                <label class="font-weight-bold col-form-label-sm">Ad</label>
+                <input type="text" name="name" class="form-control form-control-sm" placeholder="Ad" id="name"
+                  [(ngModel)]="authorParams.name">
+              </div>
+            </div>
+            <hr>
+            <div class="form-row">
+              <div class="col">
+                <label class="font-weight-bold col-form-label-sm">Soyad</label>
+                <input type="text" name="surname" class="form-control form-control-sm" placeholder="Soyad" id="surname"
+                  [(ngModel)]="authorParams.surname">
+              </div>
+            </div>
+            <hr>
+            <div class="form-row">
+              <div class="col">
+                <label class="font-weight-bold col-form-label-sm" for="gender">Yerli / Yabancı</label>
+                <select name="gender" [(ngModel)]="authorParams.nationality" class="custom-select custom-select-sm"
+                  id="gender">
+                  <option class="dropdown-item" disabled selected value="undefined">Yerli / Yabancı Seçiniz</option>
+                  <option [value]="'Domestic'" [label]="'Yerli'"></option>
+                  <option [value]="'Foreign'" [label]="'Yabancı'"></option>
+                </select>
+              </div>
+            </div>
+            <hr>
+            <div class="form-row">
+              <div class="col">
+                <label class="font-weight-bold col-form-label-sm" for="gender">Cinsiyet</label>
+                <select name="gender" [(ngModel)]="authorParams.gender" class="custom-select custom-select-sm"
+                  id="gender">
+                  <option class="dropdown-item" disabled selected value="undefined">Cinsiyet Seçiniz</option>
+                  <option [value]="0" [label]="'Erkek'"></option>
+                  <option [value]="1" [label]="'Kadın'"></option>
+                </select>
+              </div>
+            </div>
+            <hr>
+            <label class="font-weight-bold col-form-label-sm">Yaş</label>
+            <div class="form-row">
+              <div class="col">
+                <input type="number" name="minAge" class="form-control form-control-sm" placeholder="Min Yaş"
+                  [(ngModel)]="authorParams.minAge">
+              </div>
+              <div class="col">
+                <input type="number" name="maxAge" class="form-control form-control-sm" placeholder="Max Yaş"
+                  [(ngModel)]="authorParams.maxAge">
+              </div>
+            </div>
+            <hr>
+            <button class="btn btn-primary btn-block btn-sm">Ara</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-9">
+      <div class="card mb-3">
+        <div class="card-header">
+          Sıralama
+        </div>
+        <div class="card-body">
+          <select name="orderby" class="custom-select custom-select-sm col-9"
+            style="margin-left:20px; margin-right:5px;" [(ngModel)]="authorParams.orderBy" (change)="getAuthors()">
+            <option class="dropdown-item" disabled value="undefined">Sıralama Seçiniz</option>
+            <option value="age">Yaş</option>
+            <option value="bookNumber" selected>Kitap Sayısı</option>
+            <option value="lastBookDate" selected>Son Kitabının Tarihi</option>
+          </select>
+          <select name="ordering" class="custom-select custom-select-sm col-2" style="margin-left:5px;"
+            [(ngModel)]="authorParams.ordering" (change)="getAuthors()">
+            <option class="dropdown-item" disabled value="undefined">Ölçüt Seçiniz</option>
+            <option value="desc">Azalan</option>
+            <option value="asc">Artan</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let author of pageOfItems">
+          <div class="card">
+            <figure class="card card-product-grid card-lg">
+              <a [routerLink]="['/authors/', author.id]" class="user-up-info img-wrap" data-abc="true"> <img
+                  src="{{ author.imageUrl || '../../../../../assets/user.jpg' }}"> </a>
+              <figcaption class="info-wrap">
+                <div class="row">
+                  <div class="col-md-12 col-xs-12 text-center">
+                    <a [routerLink]="['/authors/', author.id]" class="title" data-abc="true">{{
+                      author.fullName }}</a>
+                    <span class="rated">{{author.city}} / {{ author.country }}</span>
+                  </div>
+                  <hr>
+                  <div class="col-md-12 col-xs-12  text-center">
+                    <i [ngClass]="{ 'fa' : author.isFavourite == true, 'far' : author.isFavourite == false }"
+                      class="fa-heart" (click)="toggleFavorite(author)"></i>
+                    &nbsp;
+                    <span class="title">{{  this.ch.convertFormattedDate (author.dateOfBirth) }}</span>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-12 col-xs-12 text-center">
+                    <a [routerLink]="['/authors/', author.id]"
+                      class="btn btn-primary btn-sm justify-content-center">Yazarı
+                      Göster</a>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <jw-pagination [items]="this.authors" (changePage)="onChangePageForAuthor($event)" [pageSize]="6"
+                class="pagination"></jw-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

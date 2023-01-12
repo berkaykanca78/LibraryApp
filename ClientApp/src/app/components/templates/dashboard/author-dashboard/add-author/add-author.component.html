@@ -1,0 +1,174 @@
+<form [formGroup]="addAuthorForm" (ngSubmit)="addAuthor()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Yeni Yazar Ekle</h5>
+    <button type="button" aria-label="Close" (click)="dismissModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6>Yazar Bilgileri:</h6>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="row">
+                <label for="gender" class="font-weight-bold col-form-label-sm">Cinsiyet : </label>
+                <div class="col-sm-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="gender" type="radio" [value]="0" formControlName="gender">
+                    <label class="form-check-label col-form-label-sm" for="male">Erkek</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="gender" type="radio" [value]="1" formControlName="gender">
+                    <label class="form-check-label col-form-label-sm" for="female">Kadın</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="name" class="font-weight-bold col-form-label-sm">Ad</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Ad" id="firstName"
+                    formControlName="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="surname" class="font-weight-bold col-form-label-sm">Soyad</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Soyad" id="lastName"
+                    formControlName="lastName">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="dateOfBirth" class="font-weight-bold col-form-label-sm">Doğum Tarihi: </label>
+                  <input type="date" class="form-control form-control-sm" placeholder="Doğum Tarihi" name="dateOfBirth"
+                    id="dateOfBirth" formControlName="dateOfBirth">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="country" class="font-weight-bold col-form-label-sm">Ülke </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Türkiye" id="country"
+                    value="Türkiye" label="Türkiye" disabled formControlName="country">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="city" class="font-weight-bold col-form-label-sm">Şehir</label>
+                  <select name="city" placeholder="Şehir" class="custom-select custom-select-sm" id="city"
+                    formControlName="city">
+                    <option class="dropdown-item" disabled selected value="">Şehir Seçiniz</option>
+                    <option *ngFor="let key of provinceKeys; index as i" [value]="key" [label]="provinceEnum[key]">
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="authorImageUrl" class="font-weight-bold col-form-label-sm">Yazar Resmi Url </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Profil Resmi Url"
+                    id="authorImageUrl" formControlName="authorImageUrl">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="authorIntroduction" class="font-weight-bold col-form-label-sm">Yazar Hakkında</label>
+                  <textarea required class="form-control form-control-sm" id="authorIntroduction"
+                    name="authorIntroduction" rows="10" formControlName="authorIntroduction"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <h6>Kitap Bilgileri</h6>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="title" class="font-weight-bold col-form-label-sm">Kitap Adı</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Kitap Adı" id="title"
+                    formControlName="title">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="categoryId" class="font-weight-bold col-form-label-sm">Kategori</label>
+                  <select class="custom-select custom-select-sm" id="categoryId" name="categoryId"
+                    formControlName="categoryId">
+                    <option class="dropdown-item" disabled selected value="">Kategori Seçiniz</option>
+                    <option *ngFor="let category of categoryList; index as i" [value]="category.value"
+                      [label]="category.label">
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="publisherId" class="font-weight-bold col-form-label-sm">Yayınevi</label>
+                  <select class="custom-select custom-select-sm" id="publisherId" name="publisherId"
+                    formControlName="publisherId">
+                    <option class="dropdown-item" disabled selected value="">Yayınevi Seçiniz</option>
+                    <option *ngFor="let publisher of publisherList; index as i" [value]="publisher.value"
+                      [label]="publisher.label">
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="totalPages" class="font-weight-bold col-form-label-sm">Sayfa Sayısı </label>
+                  <input type="number" name="totalPages" class="form-control form-control-sm" placeholder="Sayfa Sayısı"
+                    formControlName="totalPages" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="mediaType" class="font-weight-bold col-form-label-sm">Medya Tipi</label>
+                  <select class="custom-select custom-select-sm" id="mediaType" name="mediaType"
+                    formControlName="mediaType">
+                    <option class="dropdown-item" disabled selected value="">Medya Tipi Seçiniz</option>
+                    <option *ngFor="let key of mediaTypeKeys; index as i" [value]="i+1" [label]="mediaTypeEnum[key]">
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="language" class="font-weight-bold col-form-label-sm">Dil</label>
+                  <select class="custom-select custom-select-sm" id="language" name="language"
+                    formControlName="language">
+                    <option class="dropdown-item" disabled selected value="">Dil Seçiniz</option>
+                    <option *ngFor="let key of languageKeys; index as i" [value]="i+1" [label]="languageEnum[key]">
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="price" class="font-weight-bold col-form-label-sm">Fiyat </label>
+                  <input type="number" name="price" class="form-control form-control-sm" placeholder="Fiyat"
+                    formControlName="price" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="dateOfBirth" class="font-weight-bold col-form-label-sm">Yayın Tarihi: </label>
+                  <input type="date" class="form-control form-control-sm" placeholder="Yayın Tarihi"
+                    name="publishedDate" id="publishedDate" formControlName="publishedDate">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="bookImageUrl" class="font-weight-bold col-form-label-sm">Kitap Resim Url </label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Resim Url" id="bookImageUrl"
+                    formControlName="bookImageUrl">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="bookIntroduction" class="font-weight-bold col-form-label-sm">Yazar Hakkında </label>
+                  <textarea required class="form-control form-control-sm" id="bookIntroduction" name="bookIntroduction"
+                    rows="10" formControlName="bookIntroduction"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Kapat</button>
+    <button type="submit" class="btn btn-success"
+      [disabled]="addAuthorForm.invalid || !addAuthorForm.dirty">Ekle</button>
+  </div>
+</form>

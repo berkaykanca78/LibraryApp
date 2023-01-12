@@ -1,0 +1,101 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="img-container">
+          <img src="{{ book?.imageUrl || 'assets/images/user.jpg' }}" class="card-img-top img-thumbnail">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Kitap Adı:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Kitap Adı" id="title"
+                      name="title" [(ngModel)]="book.title" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Yazar:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Yazar" id="authorName"
+                      name="authorName" [(ngModel)]="book.authorName" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Kategori:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Kategori" id="categoryName"
+                      name="categoryName" [(ngModel)]="book.categoryName" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Yayıncı:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Yayıncı" id="publisherName"
+                      name="publisherName" [(ngModel)]="book.publisherName" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Medya Tipi:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Medya Tipi" id="mediaTypeName"
+                      name="mediaType" [(ngModel)]="book.mediaTypeName" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Dil:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Dil" id="languageName"
+                      name="language" [(ngModel)]="book.languageName" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Puanı (5):
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Puanı" id="rating"
+                      name="rating" [(ngModel)]="book.rating" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Fiyatı (TL):
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Fiyatı" id="price" name="price"
+                      [(ngModel)]="book.price" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Toplam Sayfa Sayısı:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Toplam Sayfa Sayısı"
+                      id="totalPage" name="totalPage" [(ngModel)]="book.totalPages" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Çıkış Tarihi:
+                    </label>
+                    <input type="date" class="form-control form-control-sm" placeholder="Çıkış Tarihi"
+                      name="publishedDate" id="publishedDate" [ngModel]="this.ch.convertFormattedDate(book.publishedDate)"
+                      disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="introduction" class="font-weight-bold col-form-label-sm">Kitap Hakkında: </label>
+                    <textarea required class="form-control form-control-sm" id="introduction" name="introduction"
+                      rows="10" [(ngModel)]="book.introduction" disabled></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

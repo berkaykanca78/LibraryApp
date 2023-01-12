@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\LibraryApp.Data\LibraryApp.Data.csproj" />
+	  <ProjectReference Include="..\LibraryApp.Infrastructure\LibraryApp.Entities.csproj" />
+	  <ProjectReference Include="..\LibraryApp.Specification\LibraryApp.Specification.csproj" />
+	  <ProjectReference Include="..\LibraryApp.WebToken\LibraryApp.WebToken.csproj" />
+	</ItemGroup>
+	
+</Project>

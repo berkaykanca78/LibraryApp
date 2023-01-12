@@ -1,0 +1,82 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="img-container">
+          <img src="{{ author?.imageUrl || 'assets/images/user.jpg' }}" class="card-img-top img-thumbnail">
+        </div>
+        <div class="card-body form-row">
+          <label class="font-weight-bold">Sistemimize Kayıtlı Kitapları:</label>
+          <div class="form-group col-md-12" *ngFor="let book of author.books">
+            <label class="col-form-label-sm m-0"><b>Kitap Adı :</b> {{ book?.title }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div class="row">
+                  <label for="gender" class="font-weight-bold col-form-label-sm">Cinsiyet : </label>
+                  <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="gender" type="radio" [value]="0" [(ngModel)]="author.gender"
+                        name="gender" [attr.disabled]="true">
+                      <label class="form-check-label col-form-label-sm" for="male">Erkek</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="gender" type="radio" [value]="1" [(ngModel)]="author.gender"
+                        name="gender" [attr.disabled]="true">
+                      <label class="form-check-label col-form-label-sm" for="female">Kadın</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Ad Soyad: </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Tam Ad" id="fullName"
+                      name="fullName" [(ngModel)]="author.fullName" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="dateOfBirth" class="font-weight-bold col-form-label-sm">Doğum Tarihi: </label>
+                    <input type="date" class="form-control form-control-sm" placeholder="Doğum Tarihi"
+                      name="dateOfBirth" id="dateOfBirth" [ngModel]="this.ch.convertFormattedDate(author.dateOfBirth)" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name" class="font-weight-bold col-form-label-sm">Yaşı: </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Yaş" id="age"
+                      name="fullName" [(ngModel)]="author.age" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="country" class="font-weight-bold col-form-label-sm">Ülke: </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Ülke" name="country"
+                      id="country" [(ngModel)]="author.country" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="city" class="font-weight-bold col-form-label-sm">Şehir: </label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Şehir" name="city" id="city"
+                      [(ngModel)]="author.city" disabled>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="introduction" class="font-weight-bold col-form-label-sm">Yazar Hakkında: </label>
+                    <textarea required class="form-control form-control-sm" id="introduction" name="introduction"
+                      rows="10" [(ngModel)]="author.introduction" disabled></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
