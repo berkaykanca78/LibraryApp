@@ -1,3 +1,3 @@
 # LibraryApp
 
-[![MasterHead](OtherFiles/Screenshoots/UserDashboard.png)
+![MasterHead](OtherFiles/Screenshoots/UserDashboard.png)
