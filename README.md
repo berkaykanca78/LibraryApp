@@ -1,4 +1,4 @@
-# LibraryApp
+# Library App
 
 <p><img align="center" src="OtherFiles/Screenshoots/UserDashboard.png" alt="Dashboard" /></p>
 <p><img align="center" src="OtherFiles/Screenshoots/Books.png" alt="Books" /></p>
