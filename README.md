@@ -1,6 +1,16 @@
 # Library App
 
-<p><img align="center" src="OtherFiles/Screenshoots/UserDashboard.png" alt="Dashboard" /></p>
-<p><img align="center" src="OtherFiles/Screenshoots/Books.png" alt="Books" /></p>
-<p><img align="center" src="OtherFiles/Screenshoots/Authors.png" alt="Authors" /></p>
-<p><img align="center" src="OtherFiles/Screenshoots/Users.png" alt="Users" /></p>
+[![MasterHead](OtherFiles/Screenshoots/UserDashboard.png)]
+
+<h1 align="center">Library Tracking Project</h1>
+
+<h2 align="center"> Web Application </h2>
+
+<h4 align="center"> ~ Using Angular, N-Tier Architecture, .NET Core 6.0 Web API, Fluent Validation, JWT, Bogus, Identity, AutoMapper, Seed Data, Bootstrap ~ </h4>
+
+## Packages Versions
+
+- .NET Core : 6.0
+- Angular : 11.2.5
+- Bootstrap : 5.2.0
+
